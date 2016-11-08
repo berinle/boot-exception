@@ -21,7 +21,7 @@ public class DemoApplicationTests {
 
 	@Test
 	public void exceptionHandling() {
-		ResponseEntity<ResponseEntity> entity = template.postForEntity("http://localhost:" + port + "/foos", new FooDto(), ResponseEntity.class);
+		ResponseEntity entity = template.postForEntity("http://localhost:" + port + "/foos", new FooDto(), String.class);
 		System.out.println("entity = " + entity);
 	}
 
