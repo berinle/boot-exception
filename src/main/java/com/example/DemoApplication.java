@@ -37,7 +37,9 @@ class GlobalExceptionHandler {
 	@ExceptionHandler({ FooException.class })
 	public ResponseEntity<?> handleException() {
 		HashMap<String, ErrorDto> map = new HashMap<>();
-		map.put("error", new ErrorDto());
+		ErrorDto dto = new ErrorDto();
+		dto.setName("foo-bar");
+		map.put("error", dto);
 
 		return ResponseEntity.badRequest().body(map);
 	}
@@ -53,6 +55,14 @@ class ErrorDto {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		final StringBuffer sb = new StringBuffer("ErrorDto{");
+		sb.append("name='").append(name).append('\'');
+		sb.append('}');
+		return sb.toString();
 	}
 }
 
