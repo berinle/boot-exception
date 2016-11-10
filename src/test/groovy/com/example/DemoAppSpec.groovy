@@ -27,11 +27,13 @@ class DemoAppSpec extends Specification {
 
         def json = new JsonSlurper().parseText(res.body)
 
+        println "json.error = $json.error"
+
         ErrorDto errorDto = json.error as ErrorDto
-        println errorDto
+        println "errorDto = $errorDto"
 
         then:
-        true
+        errorDto.time != null
 
     }
 }

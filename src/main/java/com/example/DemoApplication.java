@@ -3,17 +3,14 @@ package com.example;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
-import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 
 @SpringBootApplication
@@ -39,30 +36,10 @@ class GlobalExceptionHandler {
 		HashMap<String, ErrorDto> map = new HashMap<>();
 		ErrorDto dto = new ErrorDto();
 		dto.setName("foo-bar");
+		dto.setTime(new Date());
 		map.put("error", dto);
 
 		return ResponseEntity.badRequest().body(map);
-	}
-}
-
-@JsonIgnoreProperties(ignoreUnknown = true)
-class ErrorDto {
-  private String name;
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	@Override
-	public String toString() {
-		final StringBuffer sb = new StringBuffer("ErrorDto{");
-		sb.append("name='").append(name).append('\'');
-		sb.append('}');
-		return sb.toString();
 	}
 }
 
