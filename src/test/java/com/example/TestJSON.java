@@ -6,8 +6,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Map;
 
 public class TestJSON {
@@ -35,7 +33,7 @@ public class TestJSON {
     ObjectMapper mapper = new ObjectMapper();
     mapper.configure(DeserializationFeature.UNWRAP_ROOT_VALUE, true);
 
-    String json = new String(Files.readAllBytes(Paths.get("/private/tmp/boot-exception/src/test/java/com/example/hello.json")));
+    String json = TestUtil.toString("hello.json");
     System.out.println("json = " + json);
 
     ErrorDto errorDto = mapper.readValue(json, ErrorDto.class);
