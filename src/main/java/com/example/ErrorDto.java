@@ -4,13 +4,14 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ErrorDto {
   private String name;
 
-//  private Date time;
-  private LocalDateTime time;
+  private Date time;
+//  private LocalDateTime time;
 
 
   public ErrorDto() { }
@@ -32,11 +33,11 @@ public class ErrorDto {
   }*/
 
 
-  public LocalDateTime getTime() {
+  public Date getTime() {
     return time;
   }
 
-  public void setTime(LocalDateTime time) {
+  public void setTime(Date time) {
     this.time = time;
   }
 

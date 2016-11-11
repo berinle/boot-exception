@@ -38,8 +38,8 @@ class GlobalExceptionHandler {
 		HashMap<String, ErrorDto> map = new HashMap<>();
 		ErrorDto dto = new ErrorDto();
 		dto.setName("foo-bar");
-//		dto.setTime(new Date());
-		dto.setTime(LocalDateTime.now());
+		dto.setTime(new Date());
+//		dto.setTime(LocalDateTime.now());
 		map.put("error", dto);
 
 		return ResponseEntity.badRequest().body(map);

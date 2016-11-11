@@ -33,5 +33,6 @@ dependencies {
 	compile 'com.alibaba:fastjson:1.2.20'
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	testCompile 'org.spockframework:spock-spring:1.0-groovy-2.4'
+	testCompile("commons-io:commons-io:2.5")
 	testCompile 'cglib:cglib-nodep:3.2.2' // for stubbing of classes
 }
