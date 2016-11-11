@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -36,7 +38,8 @@ class GlobalExceptionHandler {
 		HashMap<String, ErrorDto> map = new HashMap<>();
 		ErrorDto dto = new ErrorDto();
 		dto.setName("foo-bar");
-		dto.setTime(new Date());
+//		dto.setTime(new Date());
+		dto.setTime(LocalDateTime.now());
 		map.put("error", dto);
 
 		return ResponseEntity.badRequest().body(map);

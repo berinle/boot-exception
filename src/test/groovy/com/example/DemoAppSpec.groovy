@@ -1,5 +1,6 @@
 package com.example
 
+import com.alibaba.fastjson.JSON
 import groovy.json.JsonSlurper
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.context.embedded.LocalServerPort
@@ -25,14 +26,12 @@ class DemoAppSpec extends Specification {
         println res
         println res.body
 
-        def json = new JsonSlurper().parseText(res.body)
-
-        println "json.error = $json.error"
-
-        ErrorDto errorDto = json.error as ErrorDto
-        println "errorDto = $errorDto"
+        Map map = JSON.parseObject(res.body, Map.class)
+        ErrorDto errorDto = JSON.parseObject(JSON.toJSONString(map["error"]), ErrorDto.class)
+        println "errorDto = $errorDto.time"
 
         then:
+        errorDto.name != null
         errorDto.time != null
 
     }
